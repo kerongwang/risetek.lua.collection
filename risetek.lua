@@ -12,6 +12,12 @@ cond  = cond.new(mutex)
 
 function test()
 	io.write("testing...\r\n")
+	local f, error = loadfile("/luap/test.lua")
+	if nil == error then
+	 f()
+	else
+	 io.write("file load error\r\n")
+	end
 	mutex:lock()
 	cond:signal()
 	mutex:unlock()
