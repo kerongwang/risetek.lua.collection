@@ -1,6 +1,8 @@
 local io = require("io")
 local http = require("socket.http")
 local ltn12 = require("ltn12")
+local device = require("device")
+
 local fileh = io.open("/luap/test.lua", "w")
 socket.http.TIMEOUT = 5
 io.write("\r\nstart risetek\r\n")
@@ -12,6 +14,7 @@ cond  = cond.new(mutex)
 
 function test()
 	io.write("testing...\r\n")
+	io.write(device.id(), "\r\n")
 	local f, error = loadfile("/luap/test.lua")
 	if nil == error then
 	 f()
