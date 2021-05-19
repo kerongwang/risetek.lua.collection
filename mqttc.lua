@@ -5,7 +5,9 @@ local mqtt = require("mqtt")
 local client = mqtt.client{
 	-- NOTE: this broker is not working sometimes; comment username = "..." below if you still want to use it
 	-- uri = "test.mosquitto.org",
-	uri = "mqtt.flespi.io",
+	-- uri = "mqtt.flespi.io",
+	uri = "iot.yun74.com",
+
 	-- NOTE: more about flespi tokens: https://flespi.com/kb/tokens-access-keys-to-flespi-platform
 	username = "stPwSVV73Eqw5LSv0iMXbc4EguS7JyuZR9lxU5uLxI5tiNM8ToTVqNpu85pFtJv9",
 	clean = true,
