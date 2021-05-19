@@ -7,5 +7,6 @@ if [ -z "$1" ]
 fi
 
 rm -f ./lua.tgz
-tar -zcf ./lua.tgz ./risetek.lua ./socket ./mqtt mqttc.lua
+tar -zcf ./lua.tgz ./risetek.lua ./mqtt mqttc.lua ./daemon.lua
 tftp -i $1 PUT lua.tgz
+rm lua.tgz
