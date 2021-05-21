@@ -8,10 +8,16 @@ local params = {
     port = 4222,
 }
 
+local pb = require "pb"
+assert(pb.loadfile "SessionStatus.pb")
+
+
 local client = nats.connect(params)
 
 local function subscribe_callback(payload)
-    print('Received data: ' .. payload)
+    local msg = assert(pb.decode("com.risetek.yun74.shared.SessionBrief", payload))
+    print(require "serpent".block(msg))
+--    print('Received data: ' .. payload)
 end
 
 -- client:enable_trace()

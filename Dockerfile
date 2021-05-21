@@ -34,7 +34,7 @@ COPY mqttc.lua .
 COPY nats.lua .
 COPY publish.lua .
 COPY subscribe.lua .
-
+COPY SessionStatus.pb .
 
 COPY docker/docker-entrypoint.sh /entrypoint.sh
 

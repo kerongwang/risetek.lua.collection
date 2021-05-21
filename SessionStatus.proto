@@ -1,0 +1,66 @@
+// protoc com/risetek/yun74/shared/SessionStatus.proto --java_out=.
+syntax = "proto2";
+
+package com.risetek.yun74.shared;
+// [START java_declaration]
+option java_package = "com.risetek.yun74.shared.protobuf";
+option java_outer_classname = "SessionStatus";
+
+message SessionBrief {
+  message Modem {
+    required uint32 modem_channel = 1;		// channel index
+    optional string modem_imsi = 2;			// device ident
+    optional string modem_imei = 3;			// modem IMEI
+    optional string modem_model = 4;		// device model
+    optional string modem_version = 5;		// device version
+    optional string modem_cops = 6;			// modem cops information
+    optional string modem_network = 7;		// modem network
+    optional uint32 modem_strength = 8;		// Signal Strength
+    optional string remoteAddress = 9;		// device interface address
+    optional int64 ppp_in = 10;				// PPP Flow in
+    optional int64 ppp_out = 11;			// PPP Flow out
+    optional string modem_band = 12;		// modem band
+    optional string modem_wireType = 13;	// modem wire type
+  }
+
+  message Fire {
+	required int64 fireTime = 1;			// Device Fire time.   
+	optional uint32 power1_lost = 2;			// power1 lost happen
+	optional uint32 power2_lost = 3;			// power2 lost happen
+	optional uint32 power3_lost = 4;			// power3 lost happen
+  }
+  
+  message Status {
+    required string id = 1;					// Device ID
+    optional int64 TTL = 2;					// Time To Live.
+    optional int64 lastRead = 3;			// Last GetBulk Succeed DateTime
+    optional int64 requestRead = 4;	    	// Should be read succeed DateTime
+    optional int64 in_flow = 5;				// PPP Flow in
+    optional int64 out_flow = 6;			// PPP Flow out
+    optional uint32 strength = 7;			// Signal Strength
+    optional uint64 sysup = 8;				// Device System up time.
+    optional uint32 rtt = 9;				// transfer round-trip time.
+    optional uint32 packet = 10;			// packet to get
+    optional uint32 lost = 11;				// lost packet
+    optional uint32 trap_count = 12;		// trap times
+	optional uint32 power1_voltage = 13;	// power1 voltage
+	optional uint32 power2_voltage = 14;	// power2 voltage
+	optional uint32 power3_voltage = 15;	// power3 voltage
+	 
+    optional string deviceID = 100;			// device ident
+    optional string modem_imei = 101;		// modem IMEI
+    optional string model = 112;			// device model
+    optional string version = 113;			// device version
+    optional string remoteAddress = 114;	// device interface address
+    optional string gateAddress = 115;		// drop see device address
+    optional string modem_cops = 116;		// modem cops information
+    optional string modem_network = 117;	// modem network
+    optional string modem_band = 118;		// modem band
+    optional string modem_wireType = 119;	// modem wire type
+    
+    repeated Modem modems = 200;
+	repeated Fire fires = 201;
+  }
+  
+  repeated Status status = 1;
+}
