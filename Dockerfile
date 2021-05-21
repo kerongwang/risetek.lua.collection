@@ -7,7 +7,7 @@ USER root
 
 # Install lua depends
 RUN apt-get update \ 
-    && DEBIAN_FRONTEND=noninteractive apt-get install -y sudo git lua5.1 luarocks libssl-dev \
+    && DEBIAN_FRONTEND=noninteractive apt-get install -y sudo nano make git luarocks libssl-dev \
 	&& apt-get autoclean \
 	&& apt-get clean \
 	&& apt-get autoremove \
@@ -19,14 +19,21 @@ RUN git config --global user.name "wangyc@risetek.com" && git config --global us
 RUN luarocks install luasocket --server https://luarocks.cn
 RUN luarocks install luamqtt --server https://luarocks.cn
 RUN luarocks install luabitop --server https://luarocks.cn
+RUN luarocks install lua-protobuf --server https://luarocks.cn
+RUN luarocks install serpent --server https://luarocks.cn
 
 # for lua nats support
 RUN luarocks install lua-cjson --server https://luarocks.cn
 RUN luarocks install uuid --server https://luarocks.cn
 
 ## custom lua programs
-COPY daemon.lua /usr/local/share/lua/5.1/
-COPY mqttc.lua /usr/local/share/lua/5.1/
+RUN mkdir -p /luapath
+WORKDIR /luapath
+COPY daemon.lua .
+COPY mqttc.lua .
+COPY nats.lua .
+COPY publish.lua .
+COPY subscribe.lua .
 
 
 COPY docker/docker-entrypoint.sh /entrypoint.sh
