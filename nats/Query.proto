@@ -1,0 +1,12 @@
+// protoc com/risetek/yun74/shared/Query.proto --java_out=.
+syntax = "proto2";
+
+package com.risetek.yun74.shared;
+// [START java_declaration]
+option java_package = "com.risetek.yun74.shared.protobuf";
+option java_outer_classname = "Query";
+
+message Query {
+ required string id = 1;			// device ident
+ required int64 timestamp = 2;      // Device start up timestamp in seconds.
+}
