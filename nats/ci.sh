@@ -16,7 +16,6 @@ cp ../uuid.lua $LUA_TGZ_TEMP
 cp ./nats.lua $LUA_TGZ_TEMP
 cp ../protoc.lua $LUA_TGZ_TEMP
 cp ./publish.lua $LUA_TGZ_TEMP
-cp ./Query.pb $LUA_TGZ_TEMP
 cp ./Query.proto $LUA_TGZ_TEMP
 cp ../serpent.lua $LUA_TGZ_TEMP
 

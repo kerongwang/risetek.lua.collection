@@ -18,7 +18,6 @@ while true do
  data.timestamp  = iot.timestamp()
  bytes = assert(pb.encode("com.risetek.yun74.shared.Query", data))
  print(pb.tohex(bytes), "\r\n")
- client:request(topic, pb.tohex(bytes), callback)
--- client:publish(topic, pb.tohex(bytes))
+ client:request(topic, bytes, callback)
  thread.delay(5000)
 end
