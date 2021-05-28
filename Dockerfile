@@ -29,12 +29,8 @@ RUN luarocks install uuid --server https://luarocks.cn
 ## custom lua programs
 RUN mkdir -p /luapath
 WORKDIR /luapath
-COPY daemon.lua .
-COPY mqttc.lua .
-COPY nats.lua .
-COPY publish.lua .
-COPY subscribe.lua .
-COPY SessionStatus.pb .
+COPY ./*.lua . ./
+COPY ./nats/* ./
 
 COPY docker/docker-entrypoint.sh /entrypoint.sh
 
