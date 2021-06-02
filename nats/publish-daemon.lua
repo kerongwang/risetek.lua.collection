@@ -1,4 +1,4 @@
-local params = {host = 'iot.yun74.com', port = 4222,}
+local params = {host = 'iotnats.yun74.com', port = 4222,}
 local nats = require 'nats'
 local client = nats.connect(params)
 local iot = require "iot"

@@ -4,7 +4,7 @@
 local nats = require 'nats'
 
 local params = {
-    host = 'iot.yun74.com',
+    host = 'iotnats.yun74.com',
     port = 4222,
 }
 
