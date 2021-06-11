@@ -238,6 +238,7 @@ local function connect_tcp(socket, parameters)
 
     local ok, err = socket:connect(host, port)
     if not ok then
+        socket:close()
         nats.error('could not connect to '..host..':'..port..' ['..err..']')
     end
     socket:setoption('tcp-nodelay', parameters.tcp_nodelay)
